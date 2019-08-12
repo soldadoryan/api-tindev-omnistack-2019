@@ -22,10 +22,10 @@ module.exports = {
             }).then((result) => {
                 return result;
             });
-            
-            return res.json({ success: result_store, message: "Cadastrado com sucesso!" });
+
+            return res.json({ id_user: result_store, message: "Cadastrado com sucesso!" });
         } else {
-            return res.json({ success: true, message: "Usuário logou com sucesso!" });
+            return res.json({ id_user: existsUser.id, message: "Usuário logou com sucesso!" });
         }
     },
     async index (req, res) {
@@ -45,7 +45,7 @@ module.exports = {
         var array_devs = [];
 
         devs.forEach((el, key) => {
-            if(likes.includes(el.id) == false && dislikes.includes(el.id)) array_devs.push(el);
+            if(likes.includes(el.id) == false && dislikes.includes(el.id) == false) array_devs.push(el);
         });
 
         return res.json(array_devs); 
